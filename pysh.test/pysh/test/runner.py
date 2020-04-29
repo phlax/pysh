@@ -143,6 +143,7 @@ class PyshRunner(object):
         return [wrapper, command]
 
     def run(self, command):
+        os.environ["PYTHONUNBUFFERED"] = "1"
         code = self._run(self.get_command(command))
         time_taken = round(time.time() - self.start, 4)
         formatter = self.colors["ERROR_SUMMARY"]
